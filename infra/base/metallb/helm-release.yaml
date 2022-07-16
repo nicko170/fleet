@@ -18,8 +18,8 @@ spec:
     configInline:
       peers:
         - peer-address: ${CONFIG_METALLB_PEER_A_ADDRESS}
-          peer-asn: 64512
-          my-asn: 64512
+          peer-asn: 64513
+          my-asn: 64514
         - peer-address: ${CONFIG_METALLB_PEER_B_ADDRESS}
-          peer-asn: 64512
-          my-asn: 64512
+          peer-asn: 64513
+          my-asn: 64514
