@@ -8,10 +8,10 @@ spec:
   releaseName: metallb
   chart:
     spec:
-      chart: bitnami-charts
+      chart: metallb
       sourceRef:
         kind: HelmRepository
-        name: metallb
+        name: bitnami-charts
         namespace: flux-system
   interval: 5m
   values:
