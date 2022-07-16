@@ -8,6 +8,10 @@ spec:
   interval: 5m0s
   path: ./config/rfspager
   prune: false
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   sourceRef:
     kind: GitRepository
     name: flux-system
