@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
   - ../base/metallb
   - ../base/ingress-nginx
+  - ../base/cert-manager
+  - ../base/external-dns
 patchesStrategicMerge:
   - metallb-values.yaml
   - ingress-nginx-values.yaml
