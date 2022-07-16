@@ -9,6 +9,7 @@ spec:
   dependsOn:
     - name: charts
     - name: config
+    - name: global
   sourceRef:
     kind: GitRepository
     name: flux-system
