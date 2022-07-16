@@ -15,8 +15,14 @@ spec:
   path: ./infra/rfspager
   prune: true
   validation: client
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   postBuild:
     substitute: { }
     substituteFrom:
       - kind: ConfigMap
         name: cluster-config
+      - kind: Secret
+        name: cluster-secrets

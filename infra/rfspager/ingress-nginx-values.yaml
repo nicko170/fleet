@@ -1,0 +1,14 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingress-nginx
+  namespace: ingress-nginx
+spec:
+  values:
+    controller:
+      service:
+        type: LoadBalancer
+        loadBalancerIP: ${SECRET_RFSPAGER_INGRESS_NGINX_IP}
+        annotations:
+          metallb.universe.tf/allow-shared-ip: shared-${SECRET_RFSPAGER_INGRESS_NGINX_IP}
