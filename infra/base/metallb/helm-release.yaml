@@ -1,0 +1,25 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: metallb
+  namespace: metallb-system
+spec:
+  releaseName: metallb
+  chart:
+    spec:
+      chart: bitnami-charts
+      sourceRef:
+        kind: HelmRepository
+        name: metallb
+        namespace: flux-system
+  interval: 5m
+  values:
+    configInline:
+      peers:
+        - peer-address: ${CONFIG_METALLB_PEER_A_ADDRESS}
+          peer-asn: 64512
+          my-asn: 64512
+        - peer-address: ${CONFIG_METALLB_PEER_B_ADDRESS}
+          peer-asn: 64512
+          my-asn: 64512
