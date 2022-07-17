@@ -35,13 +35,6 @@ spec:
           value: "6001"
         - name: SOKETI_DEBUG
           value: "1"
-        - name: SOKETI_ADAPTER_DRIVER
-          value: "local"
-        - name: SOKETI_CACHE_DRIVER
-          value: "local"
-        - name: SOKETI_APP_MANAGER_DRIVER
-          value: "array"
-
 
     ingress:
       enabled: true
