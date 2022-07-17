@@ -21,6 +21,14 @@ spec:
 
     app:
       mode: full
+      command:
+        - node
+        - --max-old-space-size=256
+        - --max_old_space_size=256
+        - --optimize_for_size
+        - --optimize-for-size
+        - /app/bin/server.js
+        - start
 
       extraEnv:
         - name: SOKETI_PORT
@@ -29,6 +37,10 @@ spec:
           value: "1"
         - name: SOKETI_ADAPTER_DRIVER
           value: "local"
+        - name: SOKETI_CACHE_DRIVER
+          value: "local"
+        - name: SOKETI_APP_MANAGER_DRIVER
+          value: "array"
 
 
     ingress:
