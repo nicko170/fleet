@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: soketi
+  name: es
   namespace: soketi
 spec:
   interval: 5m
@@ -19,11 +19,11 @@ spec:
   values:
     ingress:
       hosts:
-        - host: soketi.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+        - host: es.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
           paths:
             - /
 
       tls:
         - secretName: soketi.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
           hosts:
-            - soketi.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+            - es.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
