@@ -17,7 +17,7 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    replicaCount: 3
+    replicaCount: 1
 
     app:
       mode: full
@@ -27,6 +27,9 @@ spec:
           value: "6001"
         - name: SOKETI_DEBUG
           value: "1"
+        - name: SOKETI_ADAPTER_DRIVER
+          value: "local"
+
 
     ingress:
       enabled: true
