@@ -22,6 +22,12 @@ spec:
     app:
       mode: full
 
+      extraEnv:
+        - name: SOKETI_PORT
+          value: "6001"
+        - name: SOKETI_DEBUG
+          value: "1"
+
     ingress:
       enabled: true
       class: "nginx"
