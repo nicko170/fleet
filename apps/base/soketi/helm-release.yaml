@@ -35,6 +35,10 @@ spec:
           value: "6001"
         - name: SOKETI_DEBUG
           value: "1"
+        - name: SOKETI_DB_REDIS_HOST
+          value: redis-master
+        - name: SOKETI_DB_REDIS_PASSWORD
+          value: password
 
     ingress:
       enabled: true
