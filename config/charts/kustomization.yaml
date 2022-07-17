@@ -6,3 +6,4 @@ resources:
   - ingress-nginx-charts.yaml
   - jetstack-charts.yaml
   - nicko170-charts.yaml
+  - soketi-charts.yaml

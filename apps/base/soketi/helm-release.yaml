@@ -1,0 +1,40 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: soketi
+  namespace: soketi
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://helm.soketi.app
+      chart: soketi
+      version: v0.16.2
+      sourceRef:
+        kind: HelmRepository
+        name: soketi-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    replicaCount: 3
+
+    app:
+      mode: full
+
+    ingress:
+      enabled: true
+      class: "nginx"
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+
+      hosts:
+        - host: soketi.local
+          paths:
+            - /
+
+      tls:
+        - secretName: soketi-tls
+          hosts:
+            - soketi.local
