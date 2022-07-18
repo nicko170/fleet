@@ -24,7 +24,7 @@ spec:
     serviceAccount:
       server:
         create: true
-        name: velero
+        name: velero-server
     upgradeCRDs: false
     backupsEnabled: true
     snapshotsEnabled: true
