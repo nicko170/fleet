@@ -8,8 +8,6 @@ resources:
   - ../base/ingress-nginx
   - ../base/cert-manager
   - ../base/external-dns
-  - ../base/velero
 patchesStrategicMerge:
   - metallb-values.yaml
   - ingress-nginx-values.yaml
-  - velero-values.yaml
