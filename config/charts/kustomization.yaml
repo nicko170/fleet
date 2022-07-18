@@ -7,3 +7,5 @@ resources:
   - jetstack-charts.yaml
   - nicko170-charts.yaml
   - soketi-charts.yaml
+  - velero-git.yaml
+  - vmware-tanzu-charts.yaml
