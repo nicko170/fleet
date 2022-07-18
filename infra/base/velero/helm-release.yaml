@@ -36,19 +36,6 @@ spec:
           s3ForcePathStyle: true
           s3Url: http://192.168.15.2:9000
           publicUrl: http://192.168.15.2:9000
-      #volumeSnapshotLocation:
-      #  name: minio
-      #  provider: openebs.io/zfspv-blockstore
-      #  config:
-      #    bucket: pvc-backups
-      #    prefix: zfs
-      #    namespace: openebs
-      #    provider: aws
-      #    profile: minio
-      #    region: minio
-      #    s3ForcePathStyle: true
-      #    s3Url: http://minio.minio:9000
-      #    publicUrl: https://s3.${SECRET_DOMAIN}
     credentials:
       name: minio-creds
       secretContents:
@@ -75,7 +62,7 @@ spec:
           - mountPath: /target
             name: plugins
       - name: velero-plugin-for-csi
-        image: velero/velero-plugin-for-csi
+        image: vsphereveleroplugin/velero-plugin-for-vsphere:1/3/1
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - mountPath: /target
