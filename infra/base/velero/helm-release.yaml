@@ -21,6 +21,10 @@ spec:
     remediation:
       retries: 5
   values:
+    serviceAccount:
+      server:
+        create: true
+        name: velero
     upgradeCRDs: false
     backupsEnabled: true
     snapshotsEnabled: true
