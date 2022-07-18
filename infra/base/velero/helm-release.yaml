@@ -65,7 +65,7 @@ spec:
         volumeMounts:
           - mountPath: /target
             name: plugins
-      - name: velero-plugin-for-csi
+      - name: velero-plugin-for-vsphere
         image: vsphereveleroplugin/velero-plugin-for-vsphere:1.3.0
         imagePullPolicy: IfNotPresent
         volumeMounts:
