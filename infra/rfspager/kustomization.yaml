@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - ../base/monitoring
   - ../base/crds/cert-manager
-  - ../base/crds/velero
   - ../base/metallb
   - ../base/ingress-nginx
   - ../base/cert-manager
@@ -12,4 +11,3 @@ resources:
 patchesStrategicMerge:
   - metallb-values.yaml
   - ingress-nginx-values.yaml
-
