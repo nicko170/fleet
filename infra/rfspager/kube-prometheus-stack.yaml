@@ -1,0 +1,16 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  values:
+    grafana:
+      ingress:
+        hosts:
+          - grafana.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+        tls:
+          - secretName: grafana.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+            hosts:
+              - grafana.${SECRET_RFSPAGER_CLUSTER_DOMAIN}

@@ -9,5 +9,6 @@ resources:
   - ../base/cert-manager
   - ../base/external-dns
 patchesStrategicMerge:
-  - metallb-values.yaml
   - ingress-nginx-values.yaml
+  - kube-prometheus-stack.yaml
+  - metallb-values.yaml
