@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - bitnami-charts.yaml
   - flux-git.yaml
+  - grafana-charts.yaml
   - ingress-nginx-charts.yaml
   - jetstack-charts.yaml
   - nicko170-charts.yaml
