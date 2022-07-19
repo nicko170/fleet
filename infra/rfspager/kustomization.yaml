@@ -12,4 +12,4 @@ resources:
 patchesStrategicMerge:
   - metallb-values.yaml
   - ingress-nginx-values.yaml
-  - kube-prometheus-stack-values.yaml
+
