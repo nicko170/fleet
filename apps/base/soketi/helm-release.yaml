@@ -40,13 +40,7 @@ spec:
         - name: SOKETI_DB_REDIS_PASSWORD
           value: password
         - name: SOKETI_ADAPTER_DRIVER
-          value: redis
-        - name: SOKETI_CACHE_DRIVER
-          value: redis
-        - name: SOKETI_QUEUE_DRIVER
-          value: redis
-        - name: SOKETI_RATE_LIMITER_DRIVER
-          value: redis
+          value: nats
 
     ingress:
       enabled: true

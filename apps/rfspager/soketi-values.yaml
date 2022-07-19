@@ -5,17 +5,6 @@ metadata:
   name: ws
   namespace: soketi
 spec:
-  interval: 5m
-  chart:
-    spec:
-      # renovate: registryUrl=https://helm.soketi.app
-      chart: soketi
-      version: v0.16.2
-      sourceRef:
-        kind: HelmRepository
-        name: soketi-charts
-        namespace: flux-system
-      interval: 5m
   values:
     ingress:
       hosts:
