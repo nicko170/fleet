@@ -49,7 +49,12 @@ spec:
           cpu: 50m
 
       metrics:
-        enabled: false
+        enabled: true
+        serviceMonitor:
+          enabled: true
+          additionalLabels:
+            release: "kube-prometheus-stack"
+            app.kubernetes.io/part-of: ingress-nginx
 
       affinity:
         podAntiAffinity:

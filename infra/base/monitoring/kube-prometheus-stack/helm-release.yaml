@@ -39,6 +39,8 @@ spec:
           requests:
             cpu: 200m
             memory: 200Mi
+        podMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorNamespaceSelector: { }
         podMonitorSelector:
           matchLabels:
