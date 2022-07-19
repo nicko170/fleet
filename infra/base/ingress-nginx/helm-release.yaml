@@ -54,7 +54,6 @@ spec:
           enabled: true
           additionalLabels:
             release: "kube-prometheus-stack"
-            app.kubernetes.io/part-of: ingress-nginx
 
       affinity:
         podAntiAffinity:
