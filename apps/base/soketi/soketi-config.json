@@ -47,7 +47,7 @@
       "port": 6379,
       "db": 0,
       "username": null,
-      "password": null,
+      "password": "password",
       "keyPrefix": "",
       "sentinels": null,
       "sentinelPassword": null,
