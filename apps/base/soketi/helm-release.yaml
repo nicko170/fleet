@@ -21,7 +21,7 @@ spec:
     livenessProbe: ""
     readinessProbe: ""
 
-    replicaCount: 3
+    replicaCount: 5
 
     serviceMonitor:
       enabled: true
