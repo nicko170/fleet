@@ -34,6 +34,7 @@
     "driver": "memory",
     "redis": {
       "redisOptions": {},
+      "redisOptions": {},
       "clusterMode": false
     }
   },
@@ -55,7 +56,7 @@
       "clusterNodes": []
     }
   },
-  "debug": 1,
+  "debug": 0,
   "metrics": {
     "enabled": true,
     "driver": "prometheus",
