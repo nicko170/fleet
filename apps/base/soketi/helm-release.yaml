@@ -37,18 +37,12 @@ spec:
         - --optimize-for-size
         - /app/bin/server.js
         - start
+        - --config=/etc/soketi/soketi-config.json5
 
-      extraEnv:
-        - name: SOKETI_PORT
-          value: "6001"
-        - name: SOKETI_DEBUG
-          value: "1"
-        - name: SOKETI_ADAPTER_DRIVER
-          value: "redis"
-        - name: DB_REDIS_HOST
-          value: "redis-master"
-        - name: DB_REDIS_DB
-          value: "0"
+      extraVolumeMounts:
+        - name: soketi-config
+          mountPath: /etc/soketi/
+          readOnly: true
 
       multicast:
         enabled: false
@@ -71,3 +65,7 @@ spec:
         - secretName: soketi-tls
           hosts:
             - soketi.local
+    extraVolumes:
+        - name: soketi-config
+          configMap:
+            name: soketi-config

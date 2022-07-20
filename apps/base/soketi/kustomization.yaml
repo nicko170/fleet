@@ -5,3 +5,8 @@ resources:
   - namespace.yaml
   - redis
   - helm-release.yaml
+configMapGenerator:
+  - name: soketi-config
+    behavior: merge
+    files:
+      - soketi-config.json5
