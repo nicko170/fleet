@@ -22,7 +22,7 @@ spec:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '10254'
 
-      replicaCount: 2
+      replicaCount: 5
       service:
         type: LoadBalancer
         #externalTrafficPolicy: Local
