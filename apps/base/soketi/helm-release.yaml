@@ -40,6 +40,8 @@ spec:
           value: "1"
         - name: SOKETI_ADAPTER_DRIVER
           value: "redis"
+        - name: SOKETI_REDIS_HOST
+          value: "redis-master"
 
     ingress:
       enabled: true
