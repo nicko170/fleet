@@ -23,6 +23,11 @@ spec:
       enabled: true
 
     app:
+      image:
+        repository: quay.io/soketi/soketi
+        pullPolicy: IfNotPresent
+        tag: "1.2.0-16-alpine"
+
       mode: full
       command:
         - node
@@ -40,8 +45,15 @@ spec:
           value: "1"
         - name: SOKETI_ADAPTER_DRIVER
           value: "redis"
-        - name: SOKETI_REDIS_HOST
+        - name: DB_REDIS_HOST
           value: "redis-master"
+        - name: DB_REDIS_DB
+          value: "0"
+
+      multicast:
+        enabled: false
+        hostNetwork: false
+        dnsPolicy: ClusterFirstWithHostNet
 
     ingress:
       enabled: true
