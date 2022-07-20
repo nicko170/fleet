@@ -22,18 +22,17 @@ spec:
       enabled: true
 
     app:
+
       image:
         repository: quay.io/soketi/soketi
         pullPolicy: IfNotPresent
         tag: "1.2.0-16-alpine"
 
+      resources: {}
+
       mode: full
       command:
         - node
-        - --max-old-space-size=256
-        - --max_old_space_size=256
-        - --optimize_for_size
-        - --optimize-for-size
         - /app/bin/server.js
         - start
         - --config=/etc/soketi/soketi-config.json
