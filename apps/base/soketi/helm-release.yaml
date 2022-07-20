@@ -16,13 +16,14 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    replicaCount: 1
+    livenessProbe: {}
+
+    replicaCount: 3
 
     serviceMonitor:
       enabled: true
 
     app:
-
       image:
         repository: quay.io/soketi/soketi
         pullPolicy: IfNotPresent
