@@ -16,9 +16,9 @@
     "array": {
       "apps": [
         {
-          "id": "app-id",
-          "key": "app-key",
-          "secret": "app-secret",
+          "id": 1,
+          "key": "${RFSPAGER_SOKETI_APP_KEY}",
+          "secret": "${RFSPAGER_SOKETI_APP_SECRET}",
           "maxConnections": -1,
           "enableClientMessages": false,
           "enabled": true,

@@ -11,8 +11,14 @@ spec:
         - host: wss.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
           paths:
             - /
+        - host: ws.${SECRET_RFSPAGER_OLD_CLUSTER_DOMAIN}
+          paths:
+            - /
 
       tls:
         - secretName: wss.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
           hosts:
             - wss.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+        - secretName: ws.${SECRET_RFSPAGER_OLD_CLUSTER_DOMAIN}
+          hosts:
+            - ws.${SECRET_RFSPAGER_OLD_CLUSTER_DOMAIN}
