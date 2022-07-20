@@ -1,0 +1,64 @@
+{
+  "adapter": {
+    "driver": "redis"
+  },
+  "appManager": {
+    "driver": "array",
+    "cache": {
+      "enabled": false,
+      "ttl": -1
+    },
+    "array": {
+      "apps": [
+        {
+          "id": "app-id",
+          "key": "app-key",
+          "secret": "app-secret",
+          "maxConnections": -1,
+          "enableClientMessages": false,
+          "enabled": true,
+          "maxBackendEventsPerSecond": -1,
+          "maxClientEventsPerSecond": -1,
+          "maxReadRequestsPerSecond": -1,
+          "webhooks": []
+        }
+      ]
+    }
+  },
+  "cache": {
+    "driver": "memory",
+    "redis": {
+      "redisOptions": {},
+      "clusterMode": false
+    }
+  },
+  "channelLimits": {
+    "maxNameLength": 200,
+    "cacheTtl": 3600
+  },
+  "database": {
+    "redis": {
+      "host": "redis-master",
+      "port": 6379,
+      "db": 0,
+      "username": null,
+      "password": null,
+      "keyPrefix": "",
+      "sentinels": null,
+      "sentinelPassword": null,
+      "name": "redis",
+      "clusterNodes": []
+    }
+  },
+  "debug": 1,
+  "metrics": {
+    "enabled": true,
+    "driver": "prometheus",
+    "prometheus": {
+      "prefix": "soketi_"
+    },
+    "port": 9601
+  },
+  "mode": "full",
+  "port": 6001
+}
