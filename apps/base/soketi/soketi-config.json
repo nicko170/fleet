@@ -1,6 +1,11 @@
 {
   "adapter": {
-    "driver": "redis"
+    "driver": "redis",
+    "redis": {
+      "prefix": "",
+      "requestsTimeout": 5000,
+      "clusterMode": false
+    }
   },
   "appManager": {
     "driver": "array",
