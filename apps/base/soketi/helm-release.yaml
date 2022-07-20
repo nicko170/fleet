@@ -16,8 +16,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    livenessProbe: {}
-    readinessProbe: {}
+    livenessProbe: ""
+    readinessProbe: ""
 
     replicaCount: 3
 
