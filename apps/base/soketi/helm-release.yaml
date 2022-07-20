@@ -40,7 +40,7 @@ spec:
         - --config=/etc/soketi/soketi-config.json5
 
       extraVolumeMounts:
-        - name: soketi-config
+        - name: config
           mountPath: /etc/soketi/
           readOnly: true
 
@@ -66,6 +66,6 @@ spec:
           hosts:
             - soketi.local
     extraVolumes:
-        - name: soketi-config
+        - name: config
           configMap:
             name: soketi-config
