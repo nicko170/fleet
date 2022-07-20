@@ -16,7 +16,7 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    resources: {}
+
 
     livenessProbe: ""
     readinessProbe: ""
@@ -32,7 +32,10 @@ spec:
         pullPolicy: IfNotPresent
         tag: "1.2.0-16-alpine"
 
-      resources: {}
+      resources:
+        limits:
+          cpu: 1000m
+          memory: 512Mi
 
       mode: full
       command:
