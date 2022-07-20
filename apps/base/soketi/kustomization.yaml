@@ -4,10 +4,5 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - redis
+  - config
   - helm-release.yaml
-configMapGenerator:
-  - name: soketi-config
-    namespace: soketi
-    behavior: merge
-    files:
-      - soketi-config.json5
