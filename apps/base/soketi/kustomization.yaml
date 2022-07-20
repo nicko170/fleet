@@ -5,6 +5,9 @@ resources:
   - namespace.yaml
   - redis
   - helm-release.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+  disableHash: true
 configMapGenerator:
   - name: soketi-config
     namespace: soketi
