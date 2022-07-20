@@ -8,11 +8,11 @@ spec:
   values:
     ingress:
       hosts:
-        - host: es.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+        - host: wss.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
           paths:
             - /
 
       tls:
-        - secretName: soketi.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+        - secretName: wss.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
           hosts:
-            - es.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+            - wss.${SECRET_RFSPAGER_CLUSTER_DOMAIN}

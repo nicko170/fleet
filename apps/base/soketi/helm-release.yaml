@@ -17,7 +17,10 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    replicaCount: 3
+    replicaCount: 1
+
+    serviceMonitor:
+      enabled: true
 
     app:
       mode: full
@@ -35,19 +38,13 @@ spec:
           value: "6001"
         - name: SOKETI_DEBUG
           value: "1"
-        - name: SOKETI_DB_REDIS_HOST
-          value: redis-master
-        - name: SOKETI_DB_REDIS_PASSWORD
-          value: password
-        - name: SOKETI_ADAPTER_DRIVER
-          value: nats
 
     ingress:
       enabled: true
       class: "nginx"
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
-        external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+        external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
 
       hosts:
         - host: soketi.local
