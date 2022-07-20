@@ -25,7 +25,7 @@ spec:
       replicaCount: 2
       service:
         type: LoadBalancer
-        externalTrafficPolicy: Local
+        #externalTrafficPolicy: Local
 
         annotations:
           metallb.universe.tf/allow-shared-ip: shared-
@@ -35,6 +35,10 @@ spec:
         enabled: true
 
       config:
+        worker-connections: '100000'
+        worker-cpu-affinity: auto 111111111111111111111111
+        worker-processes: '16'
+        worker-rlimit-nofile: '102400'
         enable-real-ip: true
         forwarded-for-header: proxy_protocol
         ssl-protocols: "TLSv1.3 TLSv1.2"
@@ -45,8 +49,8 @@ spec:
 
       resources:
         requests:
-          memory: 250Mi
-          cpu: 50m
+          memory: 1024Mi
+          cpu: 200m
 
       metrics:
         enabled: true
