@@ -25,5 +25,5 @@ spec:
 
       tls:
         - hosts:
-            - s3.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
-          secretName: s3.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+            - minio.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+          secretName: minio.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
