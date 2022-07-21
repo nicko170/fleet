@@ -10,6 +10,9 @@ spec:
       - name: pgbackrest
         policy: none
         purge: false
+      - name: rfspager
+        policy: none
+        purge: false
 
     ingress:
       hosts:
