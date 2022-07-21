@@ -10,7 +10,7 @@ data:
     repo1-path=/rfspager-production
     repo1-type=s3
     repo1-s3-uri-style=path
-    repo1-s3-endpoint=minio.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+    repo1-s3-endpoint=s3.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
     repo1-s3-bucket=pgbackrest
     repo1-s3-verify-tls=y
     repo1-s3-key=${SECRET_GLOBAL_MINIO_ACCESS_KEY}
