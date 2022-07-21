@@ -17,6 +17,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    DeploymentUpdate:
+      type: Recreate
+
     resources:
       requests:
         memory: 4Gi
