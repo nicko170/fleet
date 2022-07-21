@@ -1,0 +1,49 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minio
+  namespace: minio
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.min.io
+      chart: minio
+      version: 4.0.0
+      sourceRef:
+        kind: HelmRepository
+        name: minio-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    persistence:
+      enabled: true
+      size: 100Gi
+      storageClass: default
+
+    mode: standalone
+
+    rootUser: "${SECRET_GLOBAL_MINIO_ROOT_USER}"
+    rootPassword: "${SECRET_GLOBAL_MINIO_ROOT_PASS}"
+
+    users:
+      - accessKey: "${SECRET_GLOBAL_MINIO_ACCESS_KEY}"
+        secretKey: "${SECRET_GLOBAL_MINIO_SECRET_KEY}"
+        policy: readwrite
+
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+      ingressClassName: "nginx"
+      path: /
+
+    consoleIngress:
+      enabled: true
+      ingressClassName: "nginx"
+      path: /
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"

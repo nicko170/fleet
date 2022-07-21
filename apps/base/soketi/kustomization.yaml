@@ -11,5 +11,6 @@ configMapGenerator:
   - name: soketi-config
     files:
       - soketi-config.json
+
 configurations:
   - kustomizeconfig.yaml
