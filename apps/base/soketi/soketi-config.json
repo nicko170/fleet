@@ -19,7 +19,7 @@
           "id": 1,
           "key": "${RFSPAGER_SOKETI_APP_KEY}",
           "secret": "${RFSPAGER_SOKETI_APP_SECRET}",
-          "maxConnections": -1,
+          "maxConnections": 100,
           "enableClientMessages": false,
           "enabled": true,
           "maxBackendEventsPerSecond": -1,
@@ -33,7 +33,6 @@
   "cache": {
     "driver": "memory",
     "redis": {
-      "redisOptions": {},
       "redisOptions": {},
       "clusterMode": false
     }
