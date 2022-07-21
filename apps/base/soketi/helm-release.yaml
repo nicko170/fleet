@@ -34,8 +34,8 @@ spec:
 
       resources:
         limits:
-          cpu: 6000m
-          memory: 1024Mi
+          cpu: 2000m
+          memory: 512Mi
 
       mode: full
       command:
