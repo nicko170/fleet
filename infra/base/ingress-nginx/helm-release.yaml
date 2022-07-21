@@ -48,9 +48,9 @@ spec:
         proxy-body-size: "50m"
 
       resources:
-        requests:
-          memory: 2048Mi
-          cpu: 16000m
+        requests: {}
+          #memory: 2048Mi
+          #cpu: 16000m
 
       metrics:
         enabled: true
