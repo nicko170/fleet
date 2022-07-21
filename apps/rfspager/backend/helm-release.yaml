@@ -1,0 +1,141 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rfspager
+  namespace: rfspager
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.nicko170.au
+      chart: laravel
+      version: 0.0.9
+      sourceRef:
+        kind: HelmRepository
+        name: nicko170-charts
+        namespace: flux-system
+      interval: 5m
+
+  values:
+    image:
+      repository: docker.io/nick170/rfspager
+      tag: v2.0.0
+
+    imagePullSecrets:
+      - name: regcred
+
+    web:
+      enabled: true
+      count: 1
+      command: /cnb/process/web
+
+    cron:
+      enabled: false
+      command: /cnb/process/schedule
+      schedule: "*/1 * * * *"
+
+    worker:
+      enabled: false
+      count: 1
+      command: /cnb/process/worker
+
+    env:
+      TZ: "Australia/Sydney"
+      PORT: 8080
+
+    envFrom:
+      - configMapRef:
+          name: rfspager-config
+      - secretRef:
+          name: rfspager-secrets
+
+    volumes:
+      - name: secret-files
+        secret:
+          secretName: rfspager-secret-files
+
+    volumeMounts:
+      - name: secret-files
+        mountPath: /secrets/
+
+    ingress:
+      enabled: true
+      ingressClassName: "nginx"
+
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+
+      hosts:
+        - host: app.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+
+      tls:
+        - hosts:
+            - app.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+          secretName: app.${SECRET_RFSPAGER_CLUSTER_DOMAIN}
+
+    redis:
+      enabled: true
+
+    postgresql:
+      enabled: true
+
+      image:
+        repository: bitnami/postgresql
+        tag: 14.2.0
+        pullPolicy: IfNotPresent
+
+      global:
+        postgresql:
+          auth:
+            postgresPassword: "${SECRET_RFSPAGER_DB_PASSWORD}"
+            username: rfspager
+            password: "${SECRET_RFSPAGER_DB_PASSWORD}"
+            database: rfspager
+
+
+      primary:
+        containerSecurityContext:
+          runAsUser: 0
+
+        extraVolumes:
+          - name: pgbackrest-config
+            configMap:
+              name: pgbackrest-config
+
+          - name: postgres-startup-scripts
+            configMap:
+              name: postgres-startup-scripts
+
+        extraVolumeMounts:
+          - name: pgbackrest-config
+            mountPath: /etc/pgbackrest
+          - name: postgres-startup-scripts
+            mountPath: /docker-entrypoint-preinitdb.d/
+
+        initContainers:
+          - name: pgbackrest-restore
+            image: bitnami/postgresql:14.2.0
+            volumeMounts:
+              - name: pgbackrest-config
+                mountPath: /etc/pgbackrest
+              - name: data
+                mountPath: /bitnami/postgresql
+            command: ["/bin/sh"]
+            args:
+              - -c
+              - >-
+                pgbackrest restore --stanza=rfspager --target-timeline current --archive-mode off --log-level-console info  &&
+                touch /bitnami/postgresql/data/recovery.signal &&
+                ls -lah /bitnami/postgresql/data/
+
+        persistence:
+          enabled: true
+          size: 100Gi
+
+      readReplicas:
+        replicaCount: 0
