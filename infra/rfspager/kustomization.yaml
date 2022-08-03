@@ -8,8 +8,7 @@ resources:
   - ../base/ingress-nginx
   - ../base/cert-manager
   - ../base/external-dns
- - metallb-address-pool.yaml
+  - metallb-address-pool.yaml
 patchesStrategicMerge:
   - ingress-nginx-values.yaml
   - kube-prometheus-stack.yaml
-
