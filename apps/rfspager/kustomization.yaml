@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - ../base/soketi
   - ../base/minio
-  - backend
 patchesStrategicMerge:
   - soketi-values.yaml
   - minio-values.yaml
