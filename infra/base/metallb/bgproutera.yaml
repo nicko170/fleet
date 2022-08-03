@@ -1,0 +1,10 @@
+---
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: bgproutera
+  namespace: metallb-system
+spec:
+  myASN: 64514
+  peerASN: 64513
+  peerAddress: ${CONFIG_METALLB_PEER_A_ADDRESS}
